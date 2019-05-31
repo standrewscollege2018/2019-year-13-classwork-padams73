@@ -15,6 +15,7 @@ print("Hello {} {}".format(first_name, last_name))
 
 # To get user input we use the input() function. Input should be assigned to a variable
 city_of_birth = input("Where were you born {}?".format(first_name))
+
 print("Wow! I too was born in {}!".format(city_of_birth))
 
 # when we are expecting non-string input, we "cast" our input as a specific data type
@@ -42,3 +43,28 @@ print(my_list)
 del my_list[4]
 print(my_list)
 
+length = len(my_list)
+
+for i in range(5):
+    print(i)
+print("Hi")
+print("All done")
+
+for j in range(len(my_list)):   
+    print(my_list[j])
+    
+for item in my_list:
+    print(item)
+    
+for letter in first_name:
+    print(letter)
+
+if age > 18:
+    print("You are old and close to death")
+    for counter in range(age):
+        print(counter)
+else:
+    print("Young")
+    
+
+    
