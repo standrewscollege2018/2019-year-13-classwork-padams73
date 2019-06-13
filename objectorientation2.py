@@ -25,8 +25,19 @@ class Enemy:
         if self._life <= 0:
             print("I am dead")
         else:
-            print(self._name, "Life:", self._life)
+            print("{} has {} life left".format(self._name, self._life))
             
+    def get_name(self):
+        """ This function returns the name of the object. """
+        
+        return self._name
+    
+    def get_life(self):
+        """ This function returns the life of the object. """
+        
+        return self._life
+        
+                    
 # To create an instance of a class, we set it as a variable
 enemy1 = Enemy("Dr Evil", 10)
 enemy2 = Enemy("Gru", 5)
@@ -34,5 +45,7 @@ enemy2 = Enemy("Gru", 5)
 # To call a function, we use "dot syntax", the name of the variable followed by a dot and then the function
 enemy1.attack(5)
 enemy1.checkLife()
+
+print("{} has {} life left".format(enemy1.get_name(), enemy1.get_life()))
 
         
