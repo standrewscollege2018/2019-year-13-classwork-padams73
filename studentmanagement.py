@@ -26,18 +26,38 @@ class Student:
         
         return self._name
 
+    def get_enrolled(self):
+        """ This function returns whether a student is enrolled. """
+        
+        return self._enrolled
+
+    def display_details(self):
+        """ This function displays all of the details of a student, nicely formatted. """
+        
+        print("\n-----------------------")
+        print("Student: {}".format(self._name))
+        print("Age: ", self._age)
+        
+        
+
 def print_names():
     """ This function loops through student_list and prints out the names of all students. """
     
     for s in student_list:
         print(s.get_name())
 
+def display_enrolled():
+    """ This function gets all details about all students."""
+
+    for s in student_list:
+        if s.get_enrolled():
+            s.display_details()
 
 # student_list will store all Student objects
 student_list = []
 
-Student("Jack", 15)
-Student("Jill", 16)
+Student("Jack", 15, "27512343", "Male", ["DVC", "MTH"])
+Student("Jill", 16, "35673214", "Female", ["MTH", "AGR"])
 
 
-print_names()
+display_enrolled()
