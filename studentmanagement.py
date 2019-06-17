@@ -98,6 +98,30 @@ def class_counter():
             counter += 1
     print("Class count: ", counter)
 
+def class_list():
+    """ This function returns a list of students belonging to the selected class. """
+    
+    class_code = input("What class are you looking for? ")
+    counter = 0
+    for s in student_list:
+        if class_code in s.get_classes():
+            counter += 1
+            print(s.get_name())
+    print("Class count: ", counter)
+
+def search():
+    """ This function enables the user to search for a student and returns details of those who
+    match the search criteria. It handles any case by lowering the case of the search criteria 
+    and matching it to the lower case of the name of each student. """
+    
+    counter = 0
+    student_name = input("Enter student name: ")
+    for s in student_list:
+        if student_name.lower() in s.get_name().lower():
+            counter += 1
+            s.display_details()
+    print("{} detail(s) found".format(counter))        
+
 # student_list will store all Student objects
 student_list = []
 
@@ -106,4 +130,4 @@ Student("Jack", 15, "27512343", "Male", ["DVC", "MTH"])
 Student("Jill", 16, "35673214", "Female", ["MTH", "AGR"])
 
 generate_students()
-class_counter()
+search()
