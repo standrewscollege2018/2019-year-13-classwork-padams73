@@ -42,12 +42,23 @@ class Student:
         
         return self._classes    
 
+    def get_enrolled(self):
+        """ This function returns whether a student is enrolled or not. """
+        
+        return self._enrolled   
+
     def info_summary(self):
         """ This function displays all the information for a student in a nicely formatted way. """
         
         print("------------------------")
         print("Student:", self._name)
-        print(self._classes)
+        print("Age: ", self._age)
+        print("Phone: ", self._phone)
+        # format list of classes before we print it out
+        classlist = ""
+        for c in self._classes:
+            classlist += c + " "
+        print("Classes: ", classlist)
 
 
 def display_info():
@@ -61,7 +72,31 @@ def display_enrolled():
     
     for student in student_list:
         if student.get_enrolled():
-            print(student.get_name())
+            student.info_summary()
+
+def check_age():
+    """ This function displays the details of all students who match the age selected. """
+    
+    # get user to enter age
+    age = int(input("Enter age: "))
+    # loop through student_list and called info_summary() for all students with that age
+    for student in student_list:
+        if student.get_age() == age:
+            student.info_summary()
+    
+def generate_students():
+    """ This function imports details for students from myRandomStudents.csv. """
+        
+    import csv
+    with open('myRandomStudents.csv', newline='') as csvfile:
+        filereader = csv.reader(csvfile)
+        for line in filereader:
+            classes=[]
+            i=4
+            while i in range(4, 9):
+                classes.append(line[i])
+                i+=1
+            Student(line[0], int(line[1]), line[2],line[3], classes)    
 
 # list to store all student objects
 student_list = []
@@ -70,4 +105,5 @@ student_list = []
 Student("Jack", 15, 271234567, "Male", ["MTH", "SCI"])
 Student("Jill", 16, 219876787, "Female", ["AGR", "DVC"])
 
-display_info()
+generate_students()
+check_age()
