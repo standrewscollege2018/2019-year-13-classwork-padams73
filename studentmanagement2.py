@@ -83,6 +83,43 @@ def check_age():
     for student in student_list:
         if student.get_age() == age:
             student.info_summary()
+
+def class_count():
+    """ This function counts how many students belong to a selected class. """
+    
+    counter = 0
+    class_code = input("Enter class code: ")
+    for student in student_list:
+        if class_code in student.get_classes():
+            counter += 1
+    print("Class count:", counter)
+
+def class_list():
+    """ This function displays the names of all students belonging to a selected class. """
+    
+    # get class code to search for
+    class_code = input("Enter class code: ")
+    # set counter starting value
+    counter = 0
+    # loop through student list and check if students belong to the class
+    for student in student_list:
+        if class_code in student.get_classes():
+            counter += 1
+            print(student.get_name())
+    print("Class count: ", counter)
+
+def search():
+    """ This function enables the user to search for a student by name. It returns all info about
+    the student. It also returns results for any student name that contains the search criteria. """
+    
+    search_name = input("Enter name of student: ")
+    counter = 0
+    for student in student_list:
+        if search_name.lower() in student.get_name().lower():
+            student.info_summary()
+            counter += 1
+    print("{} result(s) found".format(counter))
+                
     
 def generate_students():
     """ This function imports details for students from myRandomStudents.csv. """
@@ -104,6 +141,28 @@ student_list = []
 # add new students
 Student("Jack", 15, 271234567, "Male", ["MTH", "SCI"])
 Student("Jill", 16, 219876787, "Female", ["AGR", "DVC"])
-
 generate_students()
-check_age()
+
+"""This code runs the menu system that enables us to select which function to run
+It runs repeatedly until the user selects Quit, when keep_running is set to False
+and the program ends. """
+keep_running = True
+while keep_running == True:
+    print("1. Display all student info \n2. Search for student \n3. Quit program")
+    try:
+        # get user selection as an input
+        selection = int(input())
+        if selection == 1:
+            display_info()
+        elif selection == 2:
+            search()
+        elif selection == 3:
+            keep_running = False
+        else:
+            print("Enter a number from 1-3")
+    except ValueError:
+        # If we didn't get an integer, print an error message
+        print("Enter a number from 1-3")
+    
+
+
