@@ -135,6 +135,24 @@ def generate_students():
                 i+=1
             Student(line[0], int(line[1]), line[2],line[3], classes)    
 
+def add_student():
+    """ This function creates a new student object. It gets the attributes from the user, including a
+    list of classes they belong to, then calls the Student class. """
+    
+    new_name = input("Enter name: ")
+    new_age = int(input("Enter age: "))
+    new_phone = input("Enter phone number: ")
+    new_gender = input("Enter gender (either Male or Female): ")
+    new_classes = []
+    print("Enter class codes")
+    for i in range(5):
+        new_class = input("Class {}:".format(i+1))
+        new_classes.append(new_class)
+    Student(new_name, new_age, new_phone, new_gender, new_classes)
+    # Clear the new_classes list for the next student to be added
+    new_classes =[]
+
+
 # list to store all student objects
 student_list = []
 
@@ -148,21 +166,33 @@ It runs repeatedly until the user selects Quit, when keep_running is set to Fals
 and the program ends. """
 keep_running = True
 while keep_running == True:
-    print("1. Display all student info \n2. Search for student \n3. Quit program")
+    # Display user options
+    print("1. Search for a student")
+    print("2. Get class list")
+    print("3. Age search")
+    print("4. Add new student")
+    print("5. Quit")
+    # Use try and except to check that we are getting valid inputs from the user
     try:
-        # get user selection as an input
-        selection = int(input())
-        if selection == 1:
-            display_info()
-        elif selection == 2:
+        user_selection = int(input("Enter choice:"))
+        if user_selection == 1:
             search()
-        elif selection == 3:
+        elif user_selection == 2:
+            class_list()
+        elif user_selection == 3:
+            check_age()
+        elif user_selection == 4:
+            add_student()
+        elif user_selection == 5:
             keep_running = False
         else:
-            print("Enter a number from 1-3")
+            print("Error! You must enter a number from 1-4")
+        
     except ValueError:
-        # If we didn't get an integer, print an error message
-        print("Enter a number from 1-3")
+        print("Error! Please enter an integer from 1-4")
+        
+    
+    
     
 
 
