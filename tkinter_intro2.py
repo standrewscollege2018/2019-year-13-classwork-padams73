@@ -22,5 +22,9 @@ user_entry = Entry(root).grid(row=1, column=1)
 pass_label = Label(root, text="Password", bg='#123456', fg='#ffffff', font=('Calibri', 14)).grid(row=2, column=0, sticky=W)
 pass_entry = Entry(root).grid(row=2, column=1)
 
+# adding a button to login
+login_btn = Button(root, text="Login", width=30, fg='#ff0000').grid(row=3, columnspan=2)
+
+
 # to ensure the program runs indefinitely, start running a loop
 root.mainloop()
