@@ -6,15 +6,13 @@ root.title("Count up, count down")
 
 def add():
     """ This function adds one to the number and prints it. """
-    
-    global number
+
     number += 1
     print(number)
     
 def subtract():
     """ This function subtracts one from the number and prints it. """
-    
-    global number
+
     number -= 1
     print(number)
 
