@@ -15,10 +15,11 @@ def change_number(change):
 # set the starting value
 number = 0
 # list of values to change number by
-values = [1, -1,5]
+values = [1, -1,5,-5]
 
 # add buttons
 for value in values:
+    # Setting some text to appear on each button
     textdisplay = "Change by "+str(value)
     button = Button(root, text=textdisplay, command=partial(change_number,value)).grid()
 
