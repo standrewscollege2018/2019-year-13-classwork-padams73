@@ -23,8 +23,36 @@ class Pizza():
         
         return self._price
 
-       
+def add_pizza():
+    """ This function adds a new pizza, using the details entered by the user. """
+    
+    Pizza(new_name.get(), new_price.get())
+    update_label()
+    update_listbox()
+    
+def update_label():
+    """ Clears the label, then adds all pizza names and prices. """
+    
+    menu_var.set("")
+    for p in pizzas: 
+        menu_var.set(menu_var.get() + p.get_name() + "\n")
 
+def update_listbox():
+    """ This function updates the listbox by clearing it, then looping through the pizzas list and adding
+    the names. """
+    
+    menu_listbox.delete(0, END)
+    for p in pizzas:
+        menu_listbox.insert(END, p.get_name() + " $" + str(p.get_price()))
+
+def delete_pizza():
+    """ This function deletes the selected pizza. """
+    
+    for i in menu_listbox.curselection():
+        del pizzas[i]
+    update_label()
+    update_listbox()
+    
 root = Tk()
 root.geometry('300x300')
 
@@ -45,5 +73,22 @@ new_price = IntVar()
 new_pizza_entry = Entry(root, textvariable=new_name).grid(row=0, column=1)
 new_price_entry = Entry(root, textvariable=new_price).grid(row=1, column=1)
 
+# Button will call a function to add a new pizza
+add_btn = Button(root, text="Add new pizza", command=add_pizza).grid(row=2, column=0)
+
+# Label to display our menu
+menu_var = StringVar()
+menu_lbl = Label(root, textvariable=menu_var).grid(row=3, sticky=N)
+
+# Listbox to enable us to select menu items
+menu_listbox = Listbox(root, selectmode=SINGLE)
+menu_listbox.grid(row=3, column=1)
+
+# Button to delete the pizza selected in the listbox
+delete_btn = Button(root, text="DELETE", bg="#FF0000", command=delete_pizza).grid(row=4)
+
+# call the update_label() function to set menu_var and display the menu
+update_label()
+update_listbox()
 
 root.mainloop()

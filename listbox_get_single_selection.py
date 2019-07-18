@@ -14,9 +14,9 @@ def display_selection():
     for i in listbox.curselection():
         
         label_var.set(names[i])
-        print(names[i])
+        print(i)
                   
-    
+  
 
 # we need a list of items to be displayed in the listbox
 names = ["Archie", "Baz", "Chuck"]

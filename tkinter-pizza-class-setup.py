@@ -26,8 +26,7 @@ class Pizza():
 
 root = Tk()
 root.geometry('300x300')
-    
-    
+
     
 # list to store all pizza objects
 pizzas = []
@@ -36,5 +35,6 @@ pizzas = []
 Pizza("Pepperoni", 20)
 Pizza("Hawaiian", 15)
 Pizza("Cheese", 12)
+
 
 root.mainloop()

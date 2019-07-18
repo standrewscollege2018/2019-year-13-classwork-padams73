@@ -18,7 +18,7 @@ def display_selection():
         
         # to put each selection on a new line, add \n after each name
         label_var.set(label_var.get() + names[i] + "\n")
-        print(names[i])
+        print(i)
                   
     
 # we need a list of items to be displayed in the listbox

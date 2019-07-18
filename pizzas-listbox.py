@@ -3,6 +3,7 @@ to select multiple items, then when a button is clicked it displays the name of 
 It also displays a total price by adding prices of all items selected. """
 
 from tkinter import *
+from tkinter import messagebox
 
 class Pizza():
     """ Objects in this class have two attributes, name and price. """
@@ -29,6 +30,15 @@ def update_order():
     
     for i in listbox.curselection():
         total_cost.set(total_cost.get() + pizzas[i].get_price())
+        order.set(order.get() + pizzas[i].get_name() + "\n")
+
+def reset_order():
+    """ This function is called by the reset_btn, and resets total_cost to zero, and clears the order label.
+    It uses a Tkinter messagebox to check whether the user actually wants to do this. """
+    
+    if messagebox.askyesno("Warning!", "Are you sure you want to clear the order?"):
+        total_cost.set(0)
+        order.set("")
 
 root = Tk()
 root.geometry('300x300')
@@ -57,5 +67,12 @@ select_btn = Button(root, text="Select", command=update_order).grid()
 total_cost = IntVar()
 total_cost.set(0)
 cost_lbl = Label(root, textvariable=total_cost).grid()
+
+# Label to display the summary of the order
+order = StringVar()
+order_lbl = Label(root, textvariable=order).grid(row=0, column=1, sticky=N)
+
+# Button to reset the order
+reset_btn = Button(root, text="Reset order", command=reset_order).grid(row=3, column=0)
 
 root.mainloop()
