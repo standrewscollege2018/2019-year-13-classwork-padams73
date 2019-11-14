@@ -29,7 +29,7 @@ def reorder():
     """ This function sorts the list of pizzas by price. It gets the price by calling get_price() and 
     once the list is sorted it calls the update_label function to change the display. """
     
-    pizzas.sort(key=lambda x: x.get_price(), reverse=False)
+    pizzas.sort(key=lambda x: (x.get_name(), x.get_price()), reverse=False)
     update_label()
     
 
@@ -53,6 +53,7 @@ pizzas = []
 Pizza("Pepperoni", 20)
 Pizza("Hawaiian", 15)
 Pizza("Cheese", 12)
+Pizza("Pepperoni", 15)
 
 # Label to display the pizzas
 list_of_pizzas = StringVar()
